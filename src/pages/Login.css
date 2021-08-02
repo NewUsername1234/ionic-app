@@ -1,0 +1,11 @@
+#login ion-grid {
+    margin-top: 20vh;
+}
+
+#login ion-list {
+    border-radius: 20px;
+}
+
+#login ion-button {
+    margin-top: 10vh;
+}
