@@ -1,5 +1,5 @@
 {
-	"homepage": "/ionic-app/",
+	"homepage": ".",
 	"name": "ionic-app",
 	"version": "0.0.1",
 	"private": true,
