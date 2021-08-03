@@ -27,10 +27,10 @@ const Profile: React.FC<IProps> = ({ name }) => {
             <IonFooter>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonBackButton style={{ "--margin-start": "auto", "--margin-end": "auto" }} text='Logout' icon='string' color='danger' defaultHref='/login' />
+                        <IonBackButton style={{ "--margin-start": "auto", "--margin-end": "auto" }} text='Logout' icon='string' color='danger' defaultHref='/login'  />
                     </IonButtons>
                     <IonButtons slot="end">
-                        <IonButton onClick={() => history.push('/search')} color='primary'>
+                        <IonButton onClick={() => history.push('/search')} color='primary' fill='outline' shape='round'>
                             Search
                         </IonButton>
                     </IonButtons>

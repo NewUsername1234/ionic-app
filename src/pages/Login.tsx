@@ -53,7 +53,7 @@ const Login: React.FC<IProps> = ({ name, setName }) => {
                     </IonRow>
                     <IonRow>
                         <IonCol>
-                            <IonButton color="primary" expand='block' onClick={checkCredentials} disabled={loginIsDisabled} >Login</IonButton>
+                            <IonButton color="primary" expand='block' onClick={checkCredentials} disabled={loginIsDisabled} fill='outline' shape='round'>Login</IonButton>
                         </IonCol>
                     </IonRow>
                 </IonGrid>
