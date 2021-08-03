@@ -14,7 +14,7 @@ const Profile: React.FC<IProps> = ({ name }) => {
     return (
         <IonPage id='profile'>
             <IonContent>
-                <IonText class="ion-text-center">
+                <IonText class="ion-text-center" color='primary'>
                     <h1>Welcome {name} !</h1>
                 </IonText>
                 <IonAvatar className="ion-text-center">
@@ -30,7 +30,7 @@ const Profile: React.FC<IProps> = ({ name }) => {
                         <IonBackButton style={{ "--margin-start": "auto", "--margin-end": "auto" }} text='Logout' icon='string' color='danger' defaultHref='/login'  />
                     </IonButtons>
                     <IonButtons slot="end">
-                        <IonButton onClick={() => history.push('/search')} color='primary' fill='outline' shape='round'>
+                        <IonButton onClick={() => history.push('/search')} color='primary' fill='outline' >
                             Search
                         </IonButton>
                     </IonButtons>
