@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IonPage, IonContent, IonText, IonSearchbar, IonList, IonItem, IonLabel } from '@ionic/react';
+import { IonPage, IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonSearchbar, IonList, IonItem, IonLabel } from '@ionic/react';
 export const Search: React.FC = () => {
 
     /* mock data */
@@ -16,12 +16,18 @@ export const Search: React.FC = () => {
     return (
         <IonPage id='search'>
             <IonContent>
-                <IonText>
-                    <h1 className='ion-text-center'>Search</h1>
-                </IonText>
+                <IonHeader>
+                    <IonToolbar>
+                        <IonButtons slot="start">
+                            <IonBackButton text='Back' defaultHref='/profile' color='primary' />
+                        </IonButtons>
+                        <IonTitle className='ion-text-center'>Search</IonTitle>
+                    </IonToolbar>
+                </IonHeader>
                 <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)} showCancelButton="focus" />
                 <IonList>
-                    {filteredCities.map(city => (<IonItem>
+                    {filteredCities.map((city, index) =>
+                    (<IonItem key={index}>
                         <IonLabel>{city}</IonLabel>
                     </IonItem>))}
                 </IonList>

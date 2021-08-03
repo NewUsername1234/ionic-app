@@ -1,5 +1,6 @@
-import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
-import { IonContent,  IonPage, IonInput, IonItem, IonLabel, IonList, IonGrid, IonRow, IonCol } from '@ionic/react';
+import { useState, Dispatch, SetStateAction } from 'react';
+import { useHistory } from 'react-router-dom';
+import { IonContent, IonPage, IonInput, IonItem, IonLabel, IonList, IonGrid, IonRow, IonCol, IonButton } from '@ionic/react';
 import './Login.css';
 
 
@@ -9,31 +10,25 @@ interface IProps {
 }
 const Login: React.FC<IProps> = ({ name, setName }) => {
 
-    /* states */
+    /* history */
+    const history = useHistory();
 
+    /* states */
     const [password, setPassword] = useState<string>('');
-    const [credentialsAreCorrect, setCredentialsAreCorrect] = useState(false);
+    const [bgColour, setBgColour] = useState('white');
 
     /* functions */
     const checkCredentials = () => {
-        const result = name.split('').reverse().join('') === password ? true : false;
-        setCredentialsAreCorrect(result);
+        if (name.split('').reverse().join('') === password) {
+            history.push('/profile');
+            setBgColour('white');
+        } else {
+            setBgColour('red');
+        }
     }
 
-    /* useEffect */
-    useEffect(() => { if (name.length !== 0 && password.length !== 0) checkCredentials() }, [name, password]);
-
-    /* constants depending on credentials */
-    const bgColour =
-        (name.length !== 0 &&
-            password.length !== 0) ?
-            credentialsAreCorrect ?
-                'white'
-                :
-                'lightcoral'
-            : 'white';
-
-    const loginIsDisabled = credentialsAreCorrect ? false : true;
+    /* constants */
+    const loginIsDisabled = (name.length !== 0 && password.length !== 0) ? false : true;
 
     return (
         <IonPage id='login'>
@@ -58,15 +53,11 @@ const Login: React.FC<IProps> = ({ name, setName }) => {
                     </IonRow>
                     <IonRow>
                         <IonCol>
-                            <IonItem button routerLink="/profile" disabled={loginIsDisabled}>
-                                <IonLabel>Login</IonLabel>
-                            </IonItem>
+                            <IonButton color="primary" expand='block' onClick={checkCredentials} disabled={loginIsDisabled} >Login</IonButton>
                         </IonCol>
                     </IonRow>
                 </IonGrid>
             </IonContent>
-
-
         </IonPage>
     );
 };
